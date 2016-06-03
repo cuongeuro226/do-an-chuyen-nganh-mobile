@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PhuHuynh_NhaTruong.DongGopYKien"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    Android="20, 20, 20, 20"
+                    WinPhone="20, 20, 20, 20"
+                    iOS="20, 40, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   FontSize="20"
+                   Text="Đóng góp ý kiến" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Chọn đối tượng"
+                   TextColor="Red" />
+            <ListView x:Name="TargetListView"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label HorizontalOptions="Start" Text="{Binding DoiTuong}" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding DaChon, Mode=TwoWay}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label />
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Tiêu đề"
+                       TextColor="Red" />
+                <Editor Grid.Row="1" Grid.Column="0" />
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Text="Nội dung ý kiến"
+                       TextColor="Red" />
+                <Editor Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Nội dung ý kiến đóng góp" />
+
+            </Grid>
+            <Button x:Name="FeedbackButton"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Clicked="FeedbackButton_OnClicked"
+                    Text="Gửi ý kiến" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

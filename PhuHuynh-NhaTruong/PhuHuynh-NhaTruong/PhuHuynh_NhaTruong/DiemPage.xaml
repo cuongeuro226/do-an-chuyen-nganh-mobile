@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PhuHuynh_NhaTruong.DiemPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    Android="20, 20, 20, 20"
+                    WinPhone="20, 20, 20, 20"
+                    iOS="20, 40, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Spacing="15"
+                     VerticalOptions="FillAndExpand">
+            <Label Text="Điểm học sinh" />
+            <Label BackgroundColor="Red"
+                   Font="20"
+                   Text="Nguyễn Sỹ Mạnh Cường" />
+            <Button Text="Chi tiết điểm thành phần" />
+            <Button Text="Điểm học kỳ I" />
+            <Button Text="Điểm học kỳ II" />
+            <Button Text="Điểm tổng kết và đánh giá" />
+            <Button Text="Tải tất cả" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

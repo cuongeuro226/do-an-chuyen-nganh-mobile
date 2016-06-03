@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PhuHuynh_NhaTruong.BinhLuanYKien"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    Android="20, 20, 20, 20"
+                    WinPhone="20, 20, 20, 20"
+                    iOS="20, 40, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   Text="Bình luận ý kiến" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   FontSize="16"
+                   Text="Nhà trường cần bó biện pháp quan tâm đến học sinh hơn"
+                   TextColor="Red" />
+            <ListView x:Name="CommentListView"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      HasUnevenRows="True"
+                      SeparatorColor="Red"
+                      SeparatorVisibility="Default">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="#eee">
+                                <Label Text="{Binding NguoiBinhLuan}" TextColor="#f35e20" />
+                                <Label Text="{Binding NoiDung}" TextColor="#503026" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Entry Grid.Row="3"
+                   Grid.Column="0"
+                   Placeholder="Bình luận" />
+            <Button x:Name="CommentButton"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Clicked="CommentButton_OnClicked"
+                    Text="Bình luận" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

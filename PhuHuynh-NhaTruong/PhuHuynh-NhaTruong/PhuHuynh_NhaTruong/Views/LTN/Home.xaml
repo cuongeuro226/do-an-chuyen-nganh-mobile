@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PhuHuynh_NhaTruong;assembly=PhuHuynh_NhaTruong"
+             x:Class="PhuHuynh_NhaTruong.Home">
+
+  <MasterDetailPage.Master>
+    <ContentPage Title="masster" Padding="0,0,0,0">
+      <ScrollView  BackgroundColor="#EBEFEF" Orientation="Vertical">
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Orientation="Vertical">
+          <Button Text="Menu"  Clicked="a" BackgroundColor="Navy" TextColor="White" BorderRadius="0" ></Button>
+          <Button Text="Thông tin tài khoản" Clicked="onClicked" BackgroundColor="#E6E6EA" TextColor="Black"   BorderRadius="0"/>
+          <Button Text="Xem điểm"   BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0" ></Button>
+          <Button Text="Thông báo"   BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
+          <Button Text="Phản hồi"  BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0"></Button>
+          <Button Text="Tin tức"   BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
+        </StackLayout>
+      </ScrollView>
+    </ContentPage>
+  </MasterDetailPage.Master>
+
+
+
+  <MasterDetailPage.Detail>
+
+    <ContentPage >
+      <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+        <ContentView x:Name="title"
+          HeightRequest="50"
+          HorizontalOptions="Fill"
+          BackgroundColor="#DED8D8"> 
+          <StackLayout Orientation="Horizontal">
+            <Image x:Name="Btn5"
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Source="iconmenu.PNG"
+                          >
+              <Image.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean"
+                        iOS="True"
+                        Android="True"
+                        WinPhone="False" />
+              </Image.IsVisible>
+              <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="a"/>
+              </Image.GestureRecognizers>
+            </Image>
+            <Label       Text="Thông báo"
+                         TextColor="Purple"
+                         Font="Bold"
+                         FontSize="25"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="FillAndExpand"
+                            />
+            <Image x:Name="Btn55"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Source="arange.png"  >
+              <Image.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean"
+                        iOS="True"
+                        Android="True"
+                        WinPhone="False" />
+              </Image.IsVisible>
+              <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="a"/>
+              </Image.GestureRecognizers>
+            </Image>
+          </StackLayout>
+        </ContentView>
+        <ContentView x:Name="ContentPageDetail"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="FillAndExpand">
+          <local:Score></local:Score>
+        </ContentView>
+      </StackLayout>
+    </ContentPage>
+
+  </MasterDetailPage.Detail>
+  
+  
+</MasterDetailPage>

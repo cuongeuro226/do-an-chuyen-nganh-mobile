@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PhuHuynh_NhaTruong;assembly=PhuHuynh_NhaTruong"
+             x:Class="PhuHuynh_NhaTruong.Login">
+
+  <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"   Padding=" 20,20,20,20">
+
+    <Entry x:Name="enttId" Placeholder="Tên tài khoản"  FontSize="24"/>
+    <Entry x:Name="entPassWord" IsPassword="True" Placeholder="Mật khẩu"   FontSize="24" />
+    <Label x:Name="lblError" Text="{Binding error}" TextColor="Maroon" FontSize="20"  IsVisible="{Binding iserror}"/>
+    <Button x:Name="btnSubmit" Clicked="Onclick_Submit" Text="Đăng nhập"  FontSize="20" TextColor="Blue" Font="Bold"/>
+
+
+  </StackLayout>
+  
+</ContentPage>

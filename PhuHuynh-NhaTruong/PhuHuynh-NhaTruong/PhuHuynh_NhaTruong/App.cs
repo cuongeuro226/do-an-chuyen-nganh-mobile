@@ -12,7 +12,14 @@ namespace PhuHuynh_NhaTruong
         public App()
         {
             // The root page of your application
-            MainPage = new PhuHuynh_NhaTruong.ThongBao();
+            //MainPage = new PhuHuynh_NhaTruong.ThongBao();
+            //ltn
+            var temp = new NavigationPage();
+            temp.PushAsync(new Home());
+            MainPage = temp;
+            // hide navigaionbar 
+            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(temp, false);
         }
 
         protected override void OnStart()

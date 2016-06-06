@@ -5,8 +5,9 @@
              BackgroundColor="White">
 
 
-
-
+  <StackLayout IsVisible="True">
+  <Label x:Name="lblErrorThongBaoScore" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20"/>
+  <ActivityIndicator x:Name="actiLoaddingScore" Color="Lime" IsVisible="False" IsRunning="True"/>
   <ListView
     x:Name="lvScore"
     HasUnevenRows="True"
@@ -26,33 +27,31 @@
                     </StackLayout>
                   </Frame >
                   <Frame Padding="10,10,10,10">
-                    <StackLayout  Orientation="Vertical"    >
-                      <!--<Label
+                    <StackLayout  Orientation="Vertical"    > 
+                      <Label 
                           TextColor="Green"
                           FontSize="20"
-                          Text="{Binding Name}"
-                          VerticalOptions="Fill"
-                         />-->
-                      <Label
-                          TextColor="Green"
-                          FontSize="20"
-                          Text="Hiện tại đã có điểm các bộ môn sau :toán, lý hóa, sinh ,sử, địa ,công dân, công nghê, tin, văn ngoại ngữ, thể dục tin học, và ddieeerm toongr kết cả năm cho cả lớp"
+                          Text="{Binding tenLop}"
                           VerticalOptions="Fill"
                          />
                       <Button  BackgroundColor="#FADD75"  Text="Điểm cá nhân"
                                HorizontalOptions="Start"     VerticalOptions="Fill" HeightRequest="50"
                                TextColor="Black"
+                               CommandParameter="{Binding diem}" 
+                               Clicked="ButtonDiemCNhan_OnClicked"
                                FontSize="20"
                                Font="Default"
                                Opacity=".8"
                                BorderRadius="5" />
-                      <Button  BackgroundColor="#FADD75"  Text="Điểm tổng kết cả lớp"
+                      <!--<Button  BackgroundColor="#FADD75"  Text="Điểm tổng kết cả lớp"
+                               CommandParameter="{Binding diem}" 
+                               Clicked="ButtonDiemCaLop_OnClicked"
                                HorizontalOptions="Start"    VerticalOptions="Fill" HeightRequest="50"
                                TextColor="Black"
                                FontSize="20"
                                Font="Default"
                                Opacity=".8"
-                               BorderRadius="5"/>
+                               BorderRadius="5"/>-->
                     </StackLayout>
                   </Frame>
                 </StackLayout>
@@ -63,7 +62,7 @@
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
-
+  </StackLayout>
 
 
 </ContentView>

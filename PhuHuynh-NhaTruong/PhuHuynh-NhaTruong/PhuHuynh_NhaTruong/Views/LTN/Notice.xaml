@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhuHuynh_NhaTruong.Notice"
+             BackgroundColor="#F9Fcf6">
+
+  <StackLayout IsVisible="True">
+    <Label x:Name="lblErrorThongBao" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20"/>
+    <ActivityIndicator x:Name="actiLoadding" Color="Lime" IsVisible="False" IsRunning="True"/>
+    <ListView
+     x:Name="lvNewsNotice"
+     HasUnevenRows="True"
+     ItemSelected="LvNews_OnItemSelected">
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell >
+            <ContentView>
+              <Frame Padding="10,10,30,10"   >
+                <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
+                  <StackLayout   Orientation="Vertical"  Spacing="2" >
+                    <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
+                      <StackLayout  Orientation="Vertical"    >
+                        <Label  TextColor="Black" Text="{Binding TieuDe}"
+                                Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
+                        <StackLayout Orientation="Horizontal">
+                          <Label  TextColor="Blue" Text="{Binding Thongbao_Code}" Font="Italic"
+                                FontSize="18" HorizontalOptions="Start"  HorizontalTextAlignment="Start" />
+                          <Label  TextColor="Blue" Text="{Binding NgayTao}" Font="Italic"
+                                FontSize="18" HorizontalOptions="End"  HorizontalTextAlignment="End" />
+                        </StackLayout> 
+                      </StackLayout>
+                    </Frame >
+                    <Frame Padding="10,10,10,10">
+                      <Label
+                          TextColor="Green"
+                          FontSize="20"
+                          Text="{Binding NoiDung}"
+                         />
+                    </Frame>
+                  </StackLayout>
+                </Frame>
+              </Frame>
+            </ContentView>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+  
+</ContentView>

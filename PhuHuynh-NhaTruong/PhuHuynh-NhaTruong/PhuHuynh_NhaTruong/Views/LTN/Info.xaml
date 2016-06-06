@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhuHuynh_NhaTruong.Info"
+             BackgroundColor="#F9Fcf6">
+   <StackLayout>
+     <ActivityIndicator x:Name="actiLoaddinglblErrorInfo" Color="Lime" IsVisible="False" IsRunning="True"/>
+     <Label x:Name="lblErrorInfo" Font="Bold" TextColor="Red" FontSize="20" HorizontalTextAlignment="Center"/>
+     
+     <ContentView Padding="5,20,5,5">
+       <StackLayout>
+         <Label Text="{Binding HS_Code }" TextColor="Black" FontSize="15" Font="Bold"/>
+         <Label Text="{Binding Ho }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding Ten }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding NgaySinh }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding DanToc }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding GioiTinh }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding HoTenCha }" TextColor="Black" FontSize="15"  />
+         <Label Text="{Binding HoTenMe }" TextColor="Black" FontSize="15"  />
+       </StackLayout>
+     </ContentView>
+   
+   </StackLayout>
+</ContentView>

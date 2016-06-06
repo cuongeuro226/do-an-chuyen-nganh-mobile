@@ -8,12 +8,12 @@
     <ContentPage Title="masster" Padding="0,0,0,0">
       <ScrollView  BackgroundColor="#EBEFEF" Orientation="Vertical">
         <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Orientation="Vertical">
-          <Button Text="Menu"  Clicked="a" BackgroundColor="Navy" TextColor="White" BorderRadius="0" ></Button>
-          <Button Text="Thông tin tài khoản" Clicked="onClicked" BackgroundColor="#E6E6EA" TextColor="Black"   BorderRadius="0"/>
-          <Button Text="Xem điểm"   BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0" ></Button>
-          <Button Text="Thông báo"   BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
-          <Button Text="Phản hồi"  BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0"></Button>
-          <Button Text="Tin tức"   BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
+          <Button Text="Menu" Clicked="Buttonmenu_OnClicked"    BackgroundColor="Navy" TextColor="White" BorderRadius="0" ></Button>
+          <Button Text="Thông tin tài khoản" Clicked="ButtonXemThongTinTaiKhoan_OnClicked" BackgroundColor="#E6E6EA" TextColor="Black"   BorderRadius="0"/>
+          <Button Text="Xem điểm"   Clicked="ButtonXemDiem_OnClicked" BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0" ></Button>
+          <Button Text="Thông báo"  Clicked="ButtonXemThongBao_OnClicked"  BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
+          <Button Text="Phản hồi"   Clicked="ButtonPhanHoi_OnClicked"  BackgroundColor="#D8D6D6" TextColor="Black"  BorderRadius="0"></Button>
+          <Button Text="Tin tức"    Clicked="ButtonXemTinTuc_OnClicked"  BackgroundColor="#E6E6EA" TextColor="Black"  BorderRadius="0"> </Button>
         </StackLayout>
       </ScrollView>
     </ContentPage>
@@ -42,7 +42,7 @@
                         WinPhone="False" />
               </Image.IsVisible>
               <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="a"/>
+                <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
               </Image.GestureRecognizers>
             </Image>
             <Label       Text="Thông báo"
@@ -63,7 +63,7 @@
                         WinPhone="False" />
               </Image.IsVisible>
               <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="a"/>
+                <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
               </Image.GestureRecognizers>
             </Image>
           </StackLayout>

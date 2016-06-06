@@ -9,15 +9,17 @@ using Android.OS;
 
 namespace PhuHuynh_NhaTruong.Droid
 {
-    [Activity(Label = "PhuHuynh_NhaTruong", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ph-nt", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    //[Activity(Label = "PhuHuynh_NhaTruong", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+            ActionBar.Hide();
         }
     }
 }

@@ -8,7 +8,8 @@
 
     <Entry x:Name="enttId" Placeholder="Tên tài khoản"  FontSize="24"/>
     <Entry x:Name="entPassWord" IsPassword="True" Placeholder="Mật khẩu"   FontSize="24" />
-    <Label x:Name="lblError" Text="{Binding error}" TextColor="Maroon" FontSize="20"  IsVisible="{Binding iserror}"/>
+    <Label x:Name="lblError" HorizontalTextAlignment="Center" Font="Italic" Text="{Binding error}" TextColor="Maroon" FontSize="20"  IsVisible="{Binding iserror}"/>
+    <ActivityIndicator x:Name="acti" Color="Green" IsVisible="False" IsRunning="True" />
     <Button x:Name="btnSubmit" Clicked="Onclick_Submit" Text="Đăng nhập"  FontSize="20" TextColor="Blue" Font="Bold"/>
 
 

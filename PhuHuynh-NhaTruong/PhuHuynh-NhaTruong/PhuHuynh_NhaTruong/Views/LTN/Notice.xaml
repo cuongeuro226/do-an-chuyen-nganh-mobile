@@ -1,51 +1,148 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PhuHuynh_NhaTruong;assembly=PhuHuynh_NhaTruong"
+             xmlns:ltn="clr-namespace:PhuHuynh_NhaTruong.Models.LTN;assembly=PhuHuynh_NhaTruong"
              x:Class="PhuHuynh_NhaTruong.Notice"
-             BackgroundColor="#F9Fcf6">
-
-  <StackLayout IsVisible="True">
-    <Label x:Name="lblErrorThongBao" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20"/>
-    <ActivityIndicator x:Name="actiLoadding" Color="Lime" IsVisible="False" IsRunning="True"/>
-    <ListView
-     x:Name="lvNewsNotice"
-     HasUnevenRows="True"
-     ItemSelected="LvNews_OnItemSelected">
-
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell >
-            <ContentView>
-              <Frame Padding="10,10,30,10"   >
-                <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
-                  <StackLayout   Orientation="Vertical"  Spacing="2" >
-                    <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
-                      <StackLayout  Orientation="Vertical"    >
-                        <Label  TextColor="Black" Text="{Binding TieuDe}"
-                                Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
-                        <StackLayout Orientation="Horizontal">
-                          <Label  TextColor="Blue" Text="{Binding Thongbao_Code}" Font="Italic"
-                                FontSize="18" HorizontalOptions="Start"  HorizontalTextAlignment="Start" />
-                          <Label  TextColor="Blue" Text="{Binding NgayTao}" Font="Italic"
-                                FontSize="18" HorizontalOptions="End"  HorizontalTextAlignment="End" />
-                        </StackLayout> 
-                      </StackLayout>
-                    </Frame >
-                    <Frame Padding="10,10,10,10">
-                      <Label
-                          TextColor="Green"
-                          FontSize="20"
-                          Text="{Binding NoiDung}"
-                         />
-                    </Frame>
-                  </StackLayout>
-                </Frame>
-              </Frame>
-            </ContentView>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+             BackgroundColor="#F9Fcf6"
+              x:Name="main"            
+             >
   
-</ContentView>
+   
+
+  <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+    <ContentView x:Name="title"
+      HeightRequest="50"
+      HorizontalOptions="Fill"
+      BackgroundColor="#DED8D8"> 
+      <StackLayout Orientation="Horizontal">
+        <Image x:Name="Btn5"
+                      HorizontalOptions="StartAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Source="iconmenu.PNG"
+                      >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+        <Label       Text="Phụ huynh - Nhà trường"
+                      TextColor="Purple"
+                      Font="Bold"
+                      FontSize="25"
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="FillAndExpand"
+                        />
+        <Image x:Name="Btn55"
+                      HorizontalOptions="EndAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Source="arange.png"  >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+      </StackLayout>
+    </ContentView>
+    <ContentView x:Name="ContentPageDetail"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="FillAndExpand">
+            
+      <RelativeLayout HorizontalOptions="Fill" VerticalOptions="Fill"  >
+          <ContentView  
+                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Width,Factor=0,Constant=0}"
+                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Height,Factor=0,Constant=0}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Width,Factor=1,Constant=0}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Height,Factor=1,Constant=0}"
+                      > 
+          <StackLayout IsVisible="True">
+            <Label x:Key="1" x:Name="lblErrorThongBao" Text="" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20" HorizontalTextAlignment="Center"  />
+            <ActivityIndicator x:Name="actiLoadding" Color="Lime" IsVisible="False" IsRunning="True"/>
+            <ListView
+              x:Name="lvNewsNotice"
+              HasUnevenRows="True"
+              ItemSelected="LvNews_OnItemSelected">
+
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <ViewCell >
+                    <ContentView>
+                      <Frame Padding="10,10,30,10"   >
+                        <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
+                          <StackLayout   Orientation="Vertical"  Spacing="2" >
+                            <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
+                              <StackLayout  Orientation="Vertical"    >
+                                <Label  TextColor="Black" Text="{Binding TieuDe}"
+                                        Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
+                                <StackLayout Orientation="Horizontal">
+                                  <Label  TextColor="Blue" Text="{Binding Thongbao_Code}" Font="Italic"
+                                        FontSize="18" HorizontalOptions="Start"  HorizontalTextAlignment="Start" />
+                                  <Label  TextColor="Blue" Text="{Binding NgayTao}" Font="Italic"
+                                        FontSize="18" HorizontalOptions="End"  HorizontalTextAlignment="End" />
+                                </StackLayout> 
+                              </StackLayout>
+                            </Frame >
+                            <Frame Padding="10,10,10,10">
+                              <Label
+                                  TextColor="Green"
+                                  FontSize="20"
+                                  Text="{Binding NoiDung}"
+                                  />
+                            </Frame>
+                          </StackLayout>
+                        </Frame>
+                      </Frame>
+                      <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item_OnTapped" CommandParameter="{Binding Thongbao_Code}"></TapGestureRecognizer>
+                      </ContentView.GestureRecognizers>
+                    </ContentView>
+                  </ViewCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
+          </StackLayout>
+        </ContentView>
+        <Frame  x:Name="Pushnotification" BackgroundColor="Transparent"  
+                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Height,Factor=0,Constant=0}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                      Property=Width,Factor=.5,Constant=0}"
+                      VerticalOptions="StartAndExpand"   >  
+          <StackLayout Orientation="Horizontal" >
+              <Button x:Name="btnExitPushNotification" BackgroundColor="Transparent" VerticalOptions="Fill" WidthRequest="50" Clicked="BtnExitPushNotification_OnClicked"/>
+              <Label x:Name="lblPushNotification"  TextColor="Black" Font="Bold" FontSize="20" HorizontalTextAlignment="Start" > 
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer x:Name="ReloadNotification" Tapped="ReloadNotification_OnTapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+              </Label>
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer  Tapped="ReloadNotification_OnTapped"></TapGestureRecognizer>
+              </StackLayout.GestureRecognizers>
+          </StackLayout>
+     
+    
+        </Frame> 
+      </RelativeLayout>
+
+    </ContentView>
+  </StackLayout>
+ 
+
+
+
+  
+</ContentPage>

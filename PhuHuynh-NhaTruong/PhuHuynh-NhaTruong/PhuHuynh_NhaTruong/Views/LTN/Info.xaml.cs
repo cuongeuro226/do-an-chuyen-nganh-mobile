@@ -11,12 +11,26 @@ using Xamarin.Forms;
 
 namespace PhuHuynh_NhaTruong
 {
-    public partial class Info : ContentView
+    public  partial class Info : ContentPage
     {
+        private MasterDetailPage mas;
+
         public Info()
         {
             InitializeComponent();
             Getdata();
+        }
+
+        public Info(MasterDetailPage r)
+        {
+            mas = r;
+            InitializeComponent();
+            Getdata();
+        }
+
+        private void Buttonmenu_OnClicked(object sender, EventArgs e)
+        {
+            mas.IsPresented = mas.IsPresented == true ? false : true;
         }
 
         public async void Getdata()
@@ -30,7 +44,7 @@ namespace PhuHuynh_NhaTruong
         {
             var tempError = "";
             var flag = true;
-            var result = new object();
+             HocSinh result = new HocSinh();
             try
             {
                 using (var client = new HttpClient())
@@ -44,7 +58,7 @@ namespace PhuHuynh_NhaTruong
                     if (temp.Status == true)
                     {
                         flag = true;
-                        result = JsonConvert.DeserializeObject<object>(temp.Data.ToString());
+                        result = JsonConvert.DeserializeObject<HocSinh>(temp.Data.ToString());
                     }
                     else
                     {
@@ -63,7 +77,8 @@ namespace PhuHuynh_NhaTruong
                 ((Label)viewError).Text = tempError;
                 viewError.IsVisible = true;
             }
-             
+            BindingContext = result;
+
         }
 
 

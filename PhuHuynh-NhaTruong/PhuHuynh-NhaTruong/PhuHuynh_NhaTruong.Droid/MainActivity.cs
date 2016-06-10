@@ -1,11 +1,13 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.AspNet.SignalR.Client;
+using Xamarin.Forms;
 
 namespace PhuHuynh_NhaTruong.Droid
 {
@@ -20,7 +22,11 @@ namespace PhuHuynh_NhaTruong.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
             ActionBar.Hide();
+ 
+           
         }
+
+         
     }
 }
 

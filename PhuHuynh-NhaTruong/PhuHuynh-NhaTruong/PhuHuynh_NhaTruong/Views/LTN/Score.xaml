@@ -1,68 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhuHuynh_NhaTruong.Score"
              BackgroundColor="White">
 
+  <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+    <ContentView x:Name="title"
+      HeightRequest="50"
+      HorizontalOptions="Fill"
+      BackgroundColor="#DED8D8">
+      <StackLayout Orientation="Horizontal">
+        <Image x:Name="Btn5"
+                     HorizontalOptions="StartAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Source="iconmenu.PNG"
+                          >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+        <Label       Text="Phụ huynh - Nhà trường"
+                     TextColor="Purple"
+                     Font="Bold"
+                     FontSize="25"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="FillAndExpand"
+                            />
+        <Image x:Name="Btn55"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Source="arange.png"  >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+      </StackLayout>
+    </ContentView>
+    <ContentView x:Name="ContentPageDetail"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="FillAndExpand">
+      <ContentView>
+        <StackLayout IsVisible="True">
+          <Label x:Name="lblErrorThongBaoScore" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20"/>
+          <ActivityIndicator x:Name="actiLoaddingScore" Color="Lime" IsVisible="False" IsRunning="True"/>
+          <ListView
+            x:Name="lvScore"
+            HasUnevenRows="True"
+            ItemSelected="LvNews_OnItemSelected">
 
-  <StackLayout IsVisible="True">
-  <Label x:Name="lblErrorThongBaoScore" IsVisible="False" TextColor="Red" Font="Bold" FontSize="20"/>
-  <ActivityIndicator x:Name="actiLoaddingScore" Color="Lime" IsVisible="False" IsRunning="True"/>
-  <ListView
-    x:Name="lvScore"
-    HasUnevenRows="True"
-    ItemSelected="LvNews_OnItemSelected">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell >
+                  <ContentView>
+                    <Frame Padding="10,10,30,10"   >
+                      <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
+                        <StackLayout   Orientation="Vertical"  Spacing="2" >
+                          <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
+                            <StackLayout  Orientation="Vertical"    >
+                              <Label  TextColor="Olive" Text="{Binding tieuDe}"
+                                      Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
+                            </StackLayout>
+                          </Frame >
+                          <Frame Padding="10,10,10,10">
+                            <StackLayout  Orientation="Vertical"    >
+                              <Label
+                                  TextColor="Green"
+                                  FontSize="20"
+                                  Text="{Binding noiDung}"
+                                  VerticalOptions="Fill"
+                           />
+                              <Button  BackgroundColor="#FADD75"  Text="Điểm cá nhân"
+                                       HorizontalOptions="Start"     VerticalOptions="Fill" HeightRequest="50"
+                                       TextColor="Black"
+                                       CommandParameter="{Binding diem}"
+                                       Clicked="ButtonDiemCNhan_OnClicked"
+                                       FontSize="20"
+                                       Font="Default"
+                                       Opacity=".8"
+                                       BorderRadius="5" />
+                              <!--<Button  BackgroundColor="#FADD75"  Text="Điểm tổng kết cả lớp"
+                                 CommandParameter="{Binding diem}" 
+                                 Clicked="ButtonDiemCaLop_OnClicked"
+                                 HorizontalOptions="Start"    VerticalOptions="Fill" HeightRequest="50"
+                                 TextColor="Black"
+                                 FontSize="20"
+                                 Font="Default"
+                                 Opacity=".8"
+                                 BorderRadius="5"/>-->
+                            </StackLayout>
+                          </Frame>
+                        </StackLayout>
+                      </Frame>
+                    </Frame>
+                  </ContentView>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
 
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell >
-          <ContentView>
-            <Frame Padding="10,10,30,10"   >
-              <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
-                <StackLayout   Orientation="Vertical"  Spacing="2" >
-                  <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
-                    <StackLayout  Orientation="Vertical"    >
-                      <Label  TextColor="Olive" Text="Học kỳ I năm học 2015-2016"
-                              Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
-                    </StackLayout>
-                  </Frame >
-                  <Frame Padding="10,10,10,10">
-                    <StackLayout  Orientation="Vertical"    > 
-                      <Label 
-                          TextColor="Green"
-                          FontSize="20"
-                          Text="{Binding tenLop}"
-                          VerticalOptions="Fill"
-                         />
-                      <Button  BackgroundColor="#FADD75"  Text="Điểm cá nhân"
-                               HorizontalOptions="Start"     VerticalOptions="Fill" HeightRequest="50"
-                               TextColor="Black"
-                               CommandParameter="{Binding diem}" 
-                               Clicked="ButtonDiemCNhan_OnClicked"
-                               FontSize="20"
-                               Font="Default"
-                               Opacity=".8"
-                               BorderRadius="5" />
-                      <!--<Button  BackgroundColor="#FADD75"  Text="Điểm tổng kết cả lớp"
-                               CommandParameter="{Binding diem}" 
-                               Clicked="ButtonDiemCaLop_OnClicked"
-                               HorizontalOptions="Start"    VerticalOptions="Fill" HeightRequest="50"
-                               TextColor="Black"
-                               FontSize="20"
-                               Font="Default"
-                               Opacity=".8"
-                               BorderRadius="5"/>-->
-                    </StackLayout>
-                  </Frame>
-                </StackLayout>
-              </Frame>
-            </Frame>
-          </ContentView>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+
+      </ContentView>
+    </ContentView>
   </StackLayout>
-
-
-</ContentView>
+  
+  
+  
+  
+  
+</ContentPage>

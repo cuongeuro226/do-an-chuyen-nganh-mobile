@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AspNet.SignalR.Client;
 
 namespace PhuHuynh_NhaTruong.UWP
 {
@@ -22,6 +23,8 @@ namespace PhuHuynh_NhaTruong.UWP
             this.InitializeComponent();
 
             LoadApplication(new PhuHuynh_NhaTruong.App());
+
+            
         }
     }
 }

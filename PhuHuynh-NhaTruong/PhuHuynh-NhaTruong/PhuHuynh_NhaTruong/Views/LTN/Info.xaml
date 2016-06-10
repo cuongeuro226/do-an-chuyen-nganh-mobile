@@ -1,24 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PhuHuynh_NhaTruong;assembly=PhuHuynh_NhaTruong"
              x:Class="PhuHuynh_NhaTruong.Info"
              BackgroundColor="#F9Fcf6">
-   <StackLayout>
-     <ActivityIndicator x:Name="actiLoaddinglblErrorInfo" Color="Lime" IsVisible="False" IsRunning="True"/>
-     <Label x:Name="lblErrorInfo" Font="Bold" TextColor="Red" FontSize="20" HorizontalTextAlignment="Center"/>
-     
-     <ContentView Padding="5,20,5,5">
-       <StackLayout>
-         <Label Text="{Binding HS_Code }" TextColor="Black" FontSize="15" Font="Bold"/>
-         <Label Text="{Binding Ho }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding Ten }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding NgaySinh }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding DanToc }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding GioiTinh }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding HoTenCha }" TextColor="Black" FontSize="15"  />
-         <Label Text="{Binding HoTenMe }" TextColor="Black" FontSize="15"  />
-       </StackLayout>
-     </ContentView>
-   
-   </StackLayout>
-</ContentView>
+ 
+
+  <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+    <ContentView x:Name="title"
+      HeightRequest="50"
+      HorizontalOptions="Fill"
+      BackgroundColor="#DED8D8">
+      <StackLayout Orientation="Horizontal">
+        <Image x:Name="Btn5"
+                     HorizontalOptions="StartAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Source="iconmenu.PNG"
+                          >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+        <Label       Text="Phụ huynh - Nhà trường"
+                     TextColor="Purple"
+                     Font="Bold"
+                     FontSize="25"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="FillAndExpand"
+                            />
+        <Image x:Name="Btn55"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Source="arange.png"  >
+          <Image.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean"
+                    iOS="True"
+                    Android="True"
+                    WinPhone="False" />
+          </Image.IsVisible>
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Buttonmenu_OnClicked"/>
+          </Image.GestureRecognizers>
+        </Image>
+      </StackLayout>
+    </ContentView>
+    <ContentView x:Name="ContentPageDetail"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="FillAndExpand">
+      <ContentView>
+        <StackLayout>
+          <ActivityIndicator x:Name="actiLoaddinglblErrorInfo" Color="Lime" IsVisible="False" IsRunning="True"/>
+          <Label x:Name="lblErrorInfo" Font="Bold" IsVisible="False" TextColor="Red" FontSize="20" HorizontalTextAlignment="Center"/>
+
+          <ContentView Padding="5,5,5,5">
+            <ContentView>
+              <Frame Padding="5,5,5,5"   >
+                <Frame Padding="0,0,0,0" OutlineColor="#DED8D8" BackgroundColor="#F4F4F2" >
+                  <StackLayout   Orientation="Vertical"  Spacing="2" >
+                    <Frame  OutlineColor="#DED8D8" Padding="5,5,5,5" BackgroundColor="#DED8D8">
+                      <StackLayout  Orientation="Vertical"    >
+                        <Label  TextColor="Black" Text="Thông tin học sinh"
+                                Font="Bold" FontSize="30" HorizontalOptions="Fill"  HorizontalTextAlignment="Center"  />
+                      </StackLayout>
+                    </Frame >
+                    <Frame Padding="10,10,10,10">
+                      <ScrollView>
+                        <StackLayout Padding="5,5,5,5">
+                          <Label Text="Mã học sinh:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding HS_Code  }" TextColor="Red" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                          <Label Text="Họ:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding Ho }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                          <Label Text="Tên:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding Ten }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                          <Label Text="Ngày sinh:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding NgaySinh }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center" />
+                          <Label Text="Dân tộc:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding DanToc }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                          <Label Text="Giới tính:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding GioiTinh }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                          <Label Text="Họ tên cha:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding HoTenCha }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center" />
+                          <Label Text="Họ tên mẹ:" TextColor="Black" FontSize="15" Font="Italic"/>
+                          <Label Text="{Binding HoTenMe }" TextColor="Black" FontSize="15" Font="Bold" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                      </ScrollView>
+                    </Frame>
+                  </StackLayout>
+                </Frame>
+              </Frame>
+            </ContentView>
+
+
+          </ContentView>
+
+        </StackLayout>
+      </ContentView>
+    </ContentView>
+  </StackLayout>
+
+
+  
+</ContentPage>

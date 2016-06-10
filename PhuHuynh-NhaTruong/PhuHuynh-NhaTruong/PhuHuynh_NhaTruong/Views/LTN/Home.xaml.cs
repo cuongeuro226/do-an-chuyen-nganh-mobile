@@ -15,12 +15,17 @@ namespace PhuHuynh_NhaTruong
 {
     public partial class Home : MasterDetailPage
     {
-        public  Home()
+        NavigationPage navi = new NavigationPage();
+        MasterDetailPage r = new MasterDetailPage();
+        
+        public  Home(NavigationPage nav)
         {
+            navi = nav;
             NavigationPage.SetHasNavigationBar(this, false);
             NavigationPage.SetHasBackButton(this,false);
-            InitializeComponent(); 
-            
+            InitializeComponent();
+            r = this;
+            this.Detail = new Notice(r);
         }
 
         // demo get and post by api _ LTN
@@ -51,19 +56,20 @@ namespace PhuHuynh_NhaTruong
         private void ButtonXemThongTinTaiKhoan_OnClicked(object sender, EventArgs e)
         {
             IsPresented = IsPresented == true ? false : true;
-            ContentPageDetail.Content = new Info();
+            Detail = new Info(r);
+
         }
 
         private void ButtonXemDiem_OnClicked(object sender, EventArgs e)
         {
-            IsPresented = IsPresented == true ? false : true; 
-            ContentPageDetail.Content = new Score();
+            IsPresented = IsPresented == true ? false : true;
+            Detail = new Score(r);
         }
 
         private void ButtonXemThongBao_OnClicked(object sender, EventArgs e)
         {
-            IsPresented = IsPresented == true ? false : true; 
-            ContentPageDetail.Content = new Notice();
+            IsPresented = IsPresented == true ? false : true;
+            Detail = new Notice(r);
         }
 
         private void ButtonPhanHoi_OnClicked(object sender, EventArgs e)
@@ -79,6 +85,13 @@ namespace PhuHuynh_NhaTruong
             // chua co tin tuc tren sever
         }
 
- 
+        private async void ButtonThoat_OnClicked(object sender, EventArgs e)
+        {
+            Common.ID = "";
+            Common.PASSWORD = "";
+            await navi.PopToRootAsync();
+            await navi.PushAsync(new Login(navi),true);
+            navi.Navigation.RemovePage(navi.Navigation.NavigationStack.First());
+        }
     }
 }

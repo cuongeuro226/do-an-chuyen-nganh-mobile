@@ -11,13 +11,26 @@ using Xamarin.Forms;
 
 namespace PhuHuynh_NhaTruong
 {
-    public partial class Score : ContentView
+    public partial class Score : ContentPage
     {
+        private MasterDetailPage mas ;
         public Score()
         {
             InitializeComponent();
             SetItemsource();
             lvScore.IsPullToRefreshEnabled = false; 
+        }
+        public Score(MasterDetailPage r)
+        {
+            mas = r;
+            InitializeComponent();
+            SetItemsource();
+            lvScore.IsPullToRefreshEnabled = false;
+        }
+
+        private void Buttonmenu_OnClicked(object sender, EventArgs e)
+        {
+            mas.IsPresented = mas.IsPresented == true ? false : true;
         }
 
         public async Task SetItemsource()

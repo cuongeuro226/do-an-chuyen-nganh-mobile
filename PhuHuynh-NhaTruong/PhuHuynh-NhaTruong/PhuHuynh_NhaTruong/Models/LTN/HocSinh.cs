@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhuHuynh_NhaTruong.Models
 {
-    class HocSinh
+    public class HocSinh
     {
          
             public string ID { get; set; }

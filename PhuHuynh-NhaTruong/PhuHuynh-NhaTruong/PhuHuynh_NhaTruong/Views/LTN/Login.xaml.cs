@@ -75,8 +75,17 @@ namespace PhuHuynh_NhaTruong
                 lblError.BindingContext = new { error = tempError, iserror = true };
             }
             else
-            { 
-                await nav.PushAsync(new Home()); 
+            {  
+
+                await nav.PushAsync(new Home(nav));
+                if (Device.OS == TargetPlatform.Android)
+                {
+                    
+                }
+                else
+                {
+                    nav.Navigation.RemovePage( nav.Navigation.NavigationStack.First());
+                }
                 //var t = nav.Navigation.NavigationStack.First();
                 //NavigationPage.SetHasNavigationBar(t, false);
                 //NavigationPage.SetHasNavigationBar(nav, false);

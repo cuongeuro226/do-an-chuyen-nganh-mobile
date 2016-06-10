@@ -1,36 +1,58 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using CoreFoundation;
+using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PhuHuynh_NhaTruong.Models;
-using Xamarin.Forms;
+using Xamarin.Forms; 
+using UIKit;
+using HomeKit; 
+using PhuHuynh_NhaTruong.Models.LTN; 
 
 namespace PhuHuynh_NhaTruong
 {
-    public partial class Notice : ContentView
+    public partial class Notice : ContentPage
     {
+        private MasterDetailPage mas;
+
         public Notice()
-        {
-            InitializeComponent();
+        { 
+            InitializeComponent(); 
+            lvNewsNotice.IsPullToRefreshEnabled = false; 
             SetItemsource();
-            lvNewsNotice.IsPullToRefreshEnabled = true;
-            
+            ReceiveNotificationFromAdmin(); 
+        }
+        public Notice(MasterDetailPage r)
+        {
+            mas = r;
+            InitializeComponent();
+            lvNewsNotice.IsPullToRefreshEnabled = false;
+            SetItemsource();
+            ReceiveNotificationFromAdmin();
         }
 
         private void LvNews_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;
         }
-
-        
-        public async Task SetItemsource()
+        private void Buttonmenu_OnClicked(object sender, EventArgs e)
         {
+            mas.IsPresented = mas.IsPresented == true ? false : true;
+        }
+
+        public async void SetItemsource()
+        {
+            
             actiLoadding.IsVisible = true;
             lvNewsNotice.ItemsSource = await GetThongBao(lblErrorThongBao);
             actiLoadding.IsVisible = false;
@@ -76,6 +98,62 @@ namespace PhuHuynh_NhaTruong
             return result;
         }
 
-       
+
+        public async void ReceiveNotificationFromAdmin()
+        {
+            var temp = new PushNotification();
+            Common.CloseCurrentPush();
+            Common.LISTPUSHNOTIFICATIONS.Add(temp); 
+            await temp.Connect();
+
+            temp.proxy.On("ReceiveNewNotificationFromAdmin", (string title, string name, string sender, string message) =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    await Pushnotification.TranslateTo(1000, 0, 300, Easing.SinIn);
+                    lblPushNotification.Text = title + name + sender + message;
+                    await Pushnotification.FadeTo(1, UInt32.MinValue, Easing.Linear);
+                    await Pushnotification.TranslateTo(this.Width/2, 0, 300, Easing.SinIn);
+                    btnExitPushNotification.BackgroundColor = Color.Red;
+                    Pushnotification.BackgroundColor=Color.Yellow;
+                    Device.StartTimer(TimeSpan.FromSeconds(20), TimerNotificationtick);
+                }); 
+            });
+        }
+
+        public  bool TimerNotificationtick()
+        {
+            HideNotification();
+            return true;
+        }
+
+        ~Notice()
+        { 
+            Common.LISTPUSHNOTIFICATIONS.Clear(); 
+        }
+
+        private void HideNotification()
+        {
+            btnExitPushNotification.BackgroundColor= Color.Transparent;
+            Pushnotification.FadeTo(0, uint.MinValue, Easing.Linear);
+            Pushnotification.BackgroundColor = Color.Transparent;
+        }
+        private void ReloadNotification_OnTapped(object sender, EventArgs e)
+        {
+            HideNotification();
+            SetItemsource();
+
+        }
+
+        private void BtnExitPushNotification_OnClicked(object sender, EventArgs e)
+        {
+            HideNotification();
+        }
+
+        private async void Item_OnTapped(object sender, EventArgs e)
+        { 
+            var r = await DisplayActionSheet("tiêu đề", "hủy", "ok", "1","2","3","4");
+        }
     }
 }

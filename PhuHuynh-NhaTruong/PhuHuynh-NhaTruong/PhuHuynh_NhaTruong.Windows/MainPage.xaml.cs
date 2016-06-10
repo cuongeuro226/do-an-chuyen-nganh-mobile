@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AspNet.SignalR.Client;
+using PhuHuynh_NhaTruong.Models;
+using Xamarin.Forms;
 
 namespace PhuHuynh_NhaTruong.Windows
 {
@@ -22,6 +25,9 @@ namespace PhuHuynh_NhaTruong.Windows
             this.InitializeComponent();
 
             LoadApplication(new PhuHuynh_NhaTruong.App());
+
+
+           
         }
     }
 }

@@ -8,6 +8,8 @@ namespace PhuHuynh_NhaTruong.Models
 {
     public class Diem
     {
+        public String tieuDe { get; set; }
+        public String noiDung { get; set; }
         public  String idlop { get; set; } 
         public String tenLop { get; set; } 
         public String namhoc { get; set; }
